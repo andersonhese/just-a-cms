@@ -1,0 +1,32 @@
+{
+  "name": "just-a-cms",
+  "version": "1.0.0",
+  "main": "./src/server.ts",
+  "repository": "https://github.com/andersonhese/just-a-cms.git",
+  "author": "Anderson Hese <anderson.hese@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch-ts": "tsc -w",
+    "dev": "tsnd --respawn --ignore-watch node_modules src/server.ts"
+  },
+  "types": "src/@types/",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongodb": "^4.7.0",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.8.1",
+    "typeorm": "^0.3.6",
+    "typescript": "^4.7.4",
+    "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
+    "ts-node-dev": "^2.0.0"
+  }
+}
