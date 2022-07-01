@@ -9,19 +9,22 @@ export class CreateTables1656353467326 implements MigrationInterface {
         name: 'post',
         columns: [
           {
-            name: 'id', type: 'binary', isPrimary: true, width: 16
+            name: 'id', type: 'char', isPrimary: true, width: 36,
           },
           {
-            name: 'title', type: 'varchar', width: 150
+            name: 'title', type: 'varchar', width: 150,
           },
           {
-            name: 'content', type: 'json'
+            name: 'content', type: 'json', isNullable: true,
           },
           {
-            name: 'createAt', type: 'timestamp', default: 'now()'
+            name: 'status', type: 'enum', enum: [ 'editing', 'published' ],
           },
           {
-            name: 'updateAt', type: 'timestamp', onUpdate: 'now()', isNullable: true
+            name: 'createdAt', type: 'timestamp',
+          },
+          {
+            name: 'updatedAt', type: 'timestamp', isNullable: true,
           }
         ]
       }),
@@ -40,10 +43,10 @@ export class CreateTables1656353467326 implements MigrationInterface {
         name: 'author',
         columns: [
           {
-            name: 'id', type: 'binary', isPrimary: true, width: 16
+            name: 'id', type: 'char', isPrimary: true, width: 36,
           },
           {
-            name: 'name', type: 'varchar', width: 100
+            name: 'name', type: 'varchar', width: 100,
           }
         ],
       }),
@@ -53,7 +56,7 @@ export class CreateTables1656353467326 implements MigrationInterface {
     await queryRunner.addColumn(
       'post',
       new TableColumn({
-        name: 'authorId', type: 'binary', width: 16
+        name: 'authorId', type: 'char', width: 36,
       })
     )
 
