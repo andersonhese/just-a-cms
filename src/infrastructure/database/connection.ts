@@ -2,6 +2,9 @@ import 'reflect-metadata'
 import 'dotenv/config';
 import { DataSource } from 'typeorm';
 
+import { Post } from './main/entities/Post';
+import { Author } from './main/entities/Author';
+
 let cache = false;
 
 const Database = new DataSource({
@@ -13,10 +16,12 @@ const Database = new DataSource({
   database: process.env.MAIN_DB_DATABASE,
   cache: cache,
   synchronize: false,
-  entities: [ './src/database/main/entities/*.ts' ],
-  migrations: ['./src/database/main/migrations/*.ts'],
+  entities: [ Post, Author ],
+  migrations: [ __dirname + '/src/infrastructure/database/main/migrations/*.ts'],
   migrationsTableName: '_migrations'
 })
+
+console.log(__dirname + '/src/database/main/entities/*.ts')
 
 const Manager = Database.manager
 

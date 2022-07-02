@@ -1,4 +1,4 @@
-import { CreatePostDTO } from './create-post.dto'
+import { CreatePostDTO } from './create.post.dto'
 import { PostRepository } from '../../post.repository.interface'
 
 export class CreatePostCase {

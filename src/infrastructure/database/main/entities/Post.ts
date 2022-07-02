@@ -1,16 +1,12 @@
 import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, ManyToOne, JoinColumn, BeforeUpdate, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Author } from './Author';
-
-export enum PostStatusTypes {
-  EDITING = 'editing',
-  PUBLISHED = 'published'
-}
+import { PostStatusTypes } from '../interfaces/post-status-types.interface'
 
 @Entity()
 export class Post {
 
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id?: string;
 
   @Column('text')
   title: string;
@@ -22,10 +18,10 @@ export class Post {
   status: PostStatusTypes
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt?: Date
 
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt?: Date
 
   @ManyToOne(() => Author)
   @JoinColumn({ name: 'authorId' })
